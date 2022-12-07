@@ -16,7 +16,7 @@ services:
       - './data/redis:/bitnami'
   discourse:
     user: "0:0"
-    image: 'docker.io/bitnami/discourse:2-debian-10'
+    image: 'docker.io/bitnami/discourse:2.6.0-debian-10-r34'
     ports:
       - '80:3000'
     depends_on:
@@ -25,6 +25,7 @@ services:
     volumes:
       - './data/discourse:/bitnami'
     environment:
+      - POSTGRESQL_CLIENT_POSTGRES_PASSWORD=bitnami1
       - POSTGRESQL_HOST=postgresql
       - POSTGRESQL_ROOT_USER=postgres
       - POSTGRESQL_CLIENT_CREATE_DATABASE_NAME=bitnami_application
